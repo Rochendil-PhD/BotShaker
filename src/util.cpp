@@ -61,7 +61,10 @@ conn_t create_connection(const char *server, int port)
 static void send_bytes(conn_t conn, const void *data, int size)
 {
     const char *p = (const char*) data;
-	fprintf_s(stdout, "Send:%s\n", p);
+	FILE *fout = fopen("output.txt", "a");
+	fprintf_s(fout, "Send:%s\n", p);
+	fflush(fout);
+	fclose(fout);
     while (size > 0) {
         int n = send(conn, p, size, 0);
         if (n == -1)
@@ -144,7 +147,8 @@ std::string read_message(conn_t conn, headers_t &headers, std::vector<uint8_t> &
         std::string value = line.substr(sep + 1, line.length() - sep - 2);
         headers[name] = value;
     }
-	fprintf_s(stdout, "Data:%s\n", data.str().c_str());
+	fprintf_s(stdout, "%s\n", data.str().c_str());
+	fflush(stdout);
 
     if (headers.find("Content-Length") != headers.end()) {
         int content_length = atoi(headers["Content-Length"].c_str());
@@ -162,7 +166,10 @@ std::string read_message(conn_t conn, headers_t &headers, std::vector<uint8_t> &
         }
     }
 
-	fprintf_s(stdout, "Read:%s\n", start_line.c_str());
+	FILE *fout = fopen("output.txt", "a");
+	fprintf_s(fout, "Read:%s\n", start_line.c_str());
+	fflush(fout);
+	fclose(fout);
     return start_line;
 }
 

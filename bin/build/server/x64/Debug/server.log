@@ -1,3 +1,5 @@
 ﻿  server.cpp
-  server.vcxproj -> D:\Philip\Projects\eestec\\bin\x64\Debug\server.exe
-  server.vcxproj -> D:\Philip\Projects\eestec\\bin\x64\Debug\server.pdb (Full PDB)
+d:\philip\projects\eestec\botshaker\src\server.cpp(37): warning C4101: 'c': unreferenced local variable
+d:\philip\projects\eestec\botshaker\src\server.cpp(132): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.exe
+  server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.pdb (Full PDB)

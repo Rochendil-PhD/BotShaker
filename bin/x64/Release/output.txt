@@ -1,0 +1,81 @@
+Read:GET / HTTP/1.1
+Send:HTTP/1.1 200
+BotCommand:get_version
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: greetings
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: uninstall
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: getFile
+Content-Length:0
+
+
+Read:GET / HTTP/1.1
+Send:HTTP/1.1 200
+BotCommand:get_version
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: greetings
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: uninstall
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: getFile
+Content-Length:0
+
+
+Read:GET / HTTP/1.1
+Send:HTTP/1.1 200
+BotCommand:get_version
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: greetings
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: uninstall
+Content-Length:0
+
+
+Send:(null)
+Read:HTTP/1.1 200
+Send:HTTP/1.1 200
+BotCommand: getFile
+Content-Length:0
+
+

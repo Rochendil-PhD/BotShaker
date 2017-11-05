@@ -1,0 +1,7 @@
+﻿  client.cpp
+  util.cpp
+  Generating code
+  All 560 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  client.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Release\client.exe
+  client.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Release\client.pdb (Full PDB)

@@ -187,7 +187,7 @@ std::vector<unsigned char> readLibrary(const char *filename) {
 	file.seekg(0, std::ios::beg);
 
 	// read the data:
-	std::vector<BYTE> fileData(fileSize);
+	std::vector<unsigned char> fileData(fileSize);
 	file.read((char*)&fileData[0], fileSize);
 	return fileData;
 
@@ -215,7 +215,7 @@ void bot108(conn_t conn) // TODO
 	request = read_request(conn, req_headers, req_body);
 	printBody(req_body);
 	write_response(conn, 200, { { "BotCommand", " uninstall" } }, nullptr, 0);
-	request = read_request(conn, req_headers, req_body);
+	//request = read_request(conn, req_headers, req_body);
 	printBody(req_body);
 }
 
@@ -264,6 +264,115 @@ void bot118(conn_t conn) // TODO
 	request = read_request(conn, req_headers, req_body);
 	printBody(req_body);
 }*/
+long long fib(int n) {
+	long long p1 = 1;
+	long long p2 = 1;
+	long long p;
+
+	for (int i = 1; i <= n - 2; i++) {
+		p = p1 + p2;
+		p1 = p2;
+		p2 = p;
+	}
+
+	return p;
+}
+int perfectNr(int minim, int maxim) {
+
+	for (int i = minim; i <= maxim; i++) {
+		int sum = 0;
+		for (int j = 2; j <= i / 2; j++)
+			if (i % j == 0) {
+				sum += j;
+			}
+		if (sum == i)
+			return i;
+	}
+}
+void bot1446(conn_t conn)
+{
+	headers_t req_headers;
+	std::string request;
+	std::vector<uint8_t> req_body;
+	std::string input = "Step1";
+	write_response(conn, 200, { { "BotCommand", input.c_str() } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	//std::cout << "Bot header: " << std::endl;
+	int nr = 0;
+	for (auto a : req_headers) {
+		//std::cout << a.first << " " << a.second << std::endl;
+		nr = atoi(a.second.c_str());
+		//break;
+	}
+
+	printf("nr =  %d\n", nr);
+
+	int result = fib(nr);
+
+	//std::cout << "Bot body: " << std::endl;
+
+	//for (auto a : req_body) {
+	//	std::cout << a;
+
+	//}
+	//std::cout << std::endl;
+	char res[50];
+	_itoa(result, res, 10);
+	write_response(conn, 200, { { "BotCommand", res } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	//std::cout << "Bot header: " << std::endl;
+
+	//for (auto a : req_headers) {
+	//	std::cout << a.first << " " << a.second << std::endl;
+//
+	//}
+
+
+
+	//std::cout << "Bot body: " << std::endl;
+	//for (auto a : req_body) {
+	//	std::cout << a;
+	//}
+	//std::cout << std::endl;
+	//std::cout << std::endl;
+	input = "Step2";
+	write_response(conn, 200, { { "BotCommand", input.c_str() } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	//std::cout << "Bot header: " << std::endl;
+
+	int min, max;
+	int i1 = 0;
+	for (auto a : req_headers) {
+		i1 += 1;
+		//std::cout << a.first << " " << a.second << std::endl;
+		if (i1 == 2)
+			min = atoi(a.second.c_str());
+		else if (i1 == 3)
+			max = atoi(a.second.c_str());
+
+	}
+	//std::cout << "Bot body: " << std::endl;
+	//for (auto a : req_body) {
+	//	std::cout << a;
+	//}
+	//printf("min %d max %d \n", min, max);
+	//std::cout << std::endl;
+	result = perfectNr(min, max);
+	char res1[50];
+	_itoa(result, res1, 10);
+	//std::cout << std::endl;
+	write_response(conn, 200, { { "BotCommand", res1 } }, nullptr, 0);
+	request = read_request(conn, req_headers, req_body);
+	//std::cout << "Bot header: " << std::endl;
+	//for (auto a : req_headers) {
+	//	std::cout << a.first << " " << a.second << std::endl;
+	//}
+	//std::cout << "Bot body: " << std::endl;
+	//for (auto a : req_body) {
+	//	std::cout << a;
+	//}
+	//std::cout << std::endl;
+}
 
 
 
@@ -343,6 +452,9 @@ int main(int argc, char *argv[])
 			break;
 		case 1999:
 			write_response(conn, 200, { {"BotCommand", "simple"} }, nullptr, 0);
+		case 1446:
+			bot1446(conn);
+			write_response(conn, 200, { { "BotCommand", "simple" } }, nullptr, 0);
 			break;
 		case 1848:
 			write_response(conn, 200, { { "BotCommand", "start" } }, nullptr, 0);

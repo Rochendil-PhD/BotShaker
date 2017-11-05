@@ -6,5 +6,7 @@ d:\philip\projects\eestec\botshaker\src\server.cpp(153): warning C4267: 'argumen
 d:\philip\projects\eestec\botshaker\src\server.cpp(173): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 d:\philip\projects\eestec\botshaker\src\server.cpp(214): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
 d:\philip\projects\eestec\botshaker\src\server.cpp(239): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(310): warning C4244: 'initializing': conversion from '__int64' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(291): warning C4715: 'perfectNr': not all control paths return a value
   server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.exe
   server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.pdb (Full PDB)

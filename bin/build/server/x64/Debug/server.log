@@ -1,2 +1,10 @@
-﻿  server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.exe
+﻿  server.cpp
+d:\philip\projects\eestec\botshaker\src\server.cpp(38): warning C4101: 'c': unreferenced local variable
+d:\philip\projects\eestec\botshaker\src\server.cpp(125): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(138): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(153): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(173): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(214): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+d:\philip\projects\eestec\botshaker\src\server.cpp(239): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.exe
   server.vcxproj -> D:\Philip\Projects\eestec\BotShaker\\bin\x64\Debug\server.pdb (Full PDB)
